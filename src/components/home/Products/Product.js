@@ -8,6 +8,7 @@ import Badge from "./Badge";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/orebiSlice";
+import { toast } from "react-toastify";
 
 const Product = (props) => {
   const dispatch = useDispatch();
@@ -44,7 +45,20 @@ const Product = (props) => {
               </span>
             </li>
             <li
-              onClick={() =>
+              // onClick={() =>
+              //   dispatch(
+              //     addToCart({
+              //       _id: props._id,
+              //       name: props.productName,
+              //       quantity: 1,
+              //       image: props.img,
+              //       badge: props.badge,
+              //       price: props.price,
+              //       colors: props.color,
+              //     })
+              //   )
+              // }
+              onClick={() => {
                 dispatch(
                   addToCart({
                     _id: props._id,
@@ -55,8 +69,13 @@ const Product = (props) => {
                     price: props.price,
                     colors: props.color,
                   })
-                )
-              }
+                );
+
+                // Display a toast message when the product is added to the cart
+                toast.success("Product added to cart", {
+                  position: toast.POSITION.BOTTOM_RIGHT, // You can adjust the position as needed
+                });
+              }}
               className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full"
             >
               Add to Cart

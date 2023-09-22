@@ -6,6 +6,7 @@ import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,15 @@ const Cart = () => {
           </div>
 
           <button
-            onClick={() => dispatch(resetCart())}
+            // onClick={() => dispatch(resetCart())}
+            onClick={() => {
+              dispatch(resetCart());
+
+              // Display a toast message when the cart is reset
+              toast.success("Cart reset sucessfully", {
+                position: toast.POSITION.BOTTOM_RIGHT, // You can adjust the position as needed
+              });
+            }}
             className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300"
           >
             Reset cart
