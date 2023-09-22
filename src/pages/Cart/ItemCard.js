@@ -19,7 +19,7 @@ const ItemCard = ({ item }) => {
             dispatch(deleteItem(item._id));
 
             // Display a toast message when the product is removed
-            toast.error("Product removed from cart", {
+            toast.warn("Product removed from cart", {
               position: toast.POSITION.BOTTOM_RIGHT, // You can adjust the position as needed
             });
           }}
